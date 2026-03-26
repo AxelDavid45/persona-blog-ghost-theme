@@ -1,20 +1,130 @@
-.site {
+/* ========================================
+   Cuaderno — Layout
+   Minimal single-column centered structure
+   ======================================== */
+
+.c-site {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.site-content {
+.c-main {
     flex-grow: 1;
-    padding: 6rem 0;
+    padding-bottom: 4rem;
 }
 
-.page-template .site-content {
-    padding-block: 0;
+.c-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
 }
 
-@media (max-width: 767px) {
-    .site-content {
-        padding: 3rem 0;
+.gh-canvas {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+/* Footer — understated, typographic */
+.c-footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0 2rem;
+    margin-top: auto;
+}
+
+.c-footer-inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.c-footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.c-footer-brand a {
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.c-footer-brand a:hover {
+    color: var(--ink-secondary);
+}
+
+.c-footer-brand p {
+    margin-top: 0.5em;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    max-width: 320px;
+    line-height: 1.6;
+}
+
+.c-footer-nav .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.c-footer-nav .nav a {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.c-footer-nav .nav a:hover {
+    color: var(--ink);
+}
+
+.c-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.c-copyright {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.c-footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.c-footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-muted);
+    transition: color var(--transition);
+}
+
+.c-footer-social a svg {
+    width: 16px;
+    height: 16px;
+}
+
+.c-footer-social a:hover {
+    color: var(--ink);
+}
+
+@media (max-width: 600px) {
+    .c-footer-top {
+        flex-direction: column;
     }
 }

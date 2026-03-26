@@ -1,54 +1,21 @@
-.animate__animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-}
+/* ========================================
+   Cuaderno — Animations
+   Minimal — only subtle fades
+   ======================================== */
 
-@keyframes bounceIn {
-    from,
-    20%,
-    40%,
-    60%,
-    80%,
-    to {
-        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-
-    0% {
-        opacity: 0;
-        transform: scale3d(0.7, 0.7, 0.7);
-    }
-
-    40% {
-        transform: scale3d(1.1, 1.1, 1.1);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale3d(1, 1, 1);
-    }
-}
-
-.animate__bounceIn {
-    animation-name: bounceIn;
-    animation-duration: 0.3s;
-}
-
-@keyframes zoomOut {
+@keyframes c-fade-in {
     from {
-        opacity: 1;
-    }
-
-    50% {
         opacity: 0;
-        transform: scale3d(0.7, 0.7, 0.7);
     }
-
     to {
-        opacity: 0;
+        opacity: 1;
     }
 }
 
-.animate__zoomOut {
-    animation-name: zoomOut;
-    animation-duration: 0.3s;
+.c-article-header {
+    animation: c-fade-in 0.5s ease-out 0.1s both;
+}
+
+.c-article-body {
+    animation: c-fade-in 0.4s ease-out 0.2s both;
 }

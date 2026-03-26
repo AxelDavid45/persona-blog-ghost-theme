@@ -1,62 +1,20 @@
-@font-face {
-    font-family: Mulish;
-    font-style: normal;
-    font-weight: 400;
-    src: local(""), url("../fonts/mulish-v10-latin-regular.woff2") format("woff2"), url("../fonts/mulish-v10-latin-regular.woff") format("woff");
+/* ========================================
+   Cuaderno — Typography
+   Lora (serif titles), Source Sans 3 (body),
+   IBM Plex Mono (code/meta)
+   ======================================== */
+
+:root {
+    --font-title: 'Lora', Georgia, 'Times New Roman', serif;
+    --font-body: 'Source Sans 3', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 }
 
-@font-face {
-    font-family: Mulish;
-    font-style: normal;
-    font-weight: 700;
-    src: local(""), url("../fonts/mulish-v10-latin-700.woff2") format("woff2"), url("../fonts/mulish-v10-latin-700.woff") format("woff");
+/* Title font variants (controlled via Ghost Admin) */
+.title-sans {
+    --font-title: 'Source Sans 3', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
-@font-face {
-    font-family: Mulish;
-    font-style: normal;
-    font-weight: 800;
-    src: local(""), url("../fonts/mulish-v10-latin-800.woff2") format("woff2"), url("../fonts/mulish-v10-latin-800.woff") format("woff");
-}
-
-@font-face {
-    font-family: Mulish;
-    font-style: italic;
-    font-weight: 400;
-    src: local(""), url("../fonts/mulish-v10-latin-italic.woff2") format("woff2"), url("../fonts/mulish-v10-latin-italic.woff") format("woff");
-}
-
-@font-face {
-    font-family: Mulish;
-    font-style: italic;
-    font-weight: 700;
-    src: local(""), url("../fonts/mulish-v10-latin-700italic.woff2") format("woff2"), url("../fonts/mulish-v10-latin-700italic.woff") format("woff");
-}
-
-@font-face {
-    font-family: Lora;
-    font-style: normal;
-    font-weight: 400;
-    src: local(""), url("../fonts/lora-v23-latin-regular.woff2") format("woff2"), url("../fonts/lora-v23-latin-regular.woff") format("woff");
-}
-
-@font-face {
-    font-family: Lora;
-    font-style: normal;
-    font-weight: 700;
-    src: local(""), url("../fonts/lora-v23-latin-700.woff2") format("woff2"), url("../fonts/lora-v23-latin-700.woff") format("woff");
-}
-
-@font-face {
-    font-family: Lora;
-    font-style: italic;
-    font-weight: 400;
-    src: local(""), url("../fonts/lora-v23-latin-italic.woff2") format("woff2"), url("../fonts/lora-v23-latin-italic.woff") format("woff");
-}
-
-@font-face {
-    font-family: Lora;
-    font-style: italic;
-    font-weight: 700;
-    src: local(""), url("../fonts/lora-v23-latin-700italic.woff2") format("woff2"), url("../fonts/lora-v23-latin-700italic.woff") format("woff");
+.title-modern {
+    --font-title: Georgia, 'Times New Roman', serif;
 }

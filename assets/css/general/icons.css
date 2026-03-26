@@ -1,3 +1,7 @@
+/* ========================================
+   Cuaderno — Icons & Toolbar
+   ======================================== */
+
 symbol {
     fill: currentColor;
 }
@@ -7,7 +11,109 @@ symbol {
     height: 20px;
 }
 
-.icon-loading {
-    width: 26px;
-    height: 26px;
+.c-search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+.c-search-btn:hover {
+    color: var(--ink);
+}
+
+.c-search-btn .icon {
+    width: 17px;
+    height: 17px;
+}
+
+/* Reading toolbar */
+.c-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px;
+    background: var(--surface);
+}
+
+.c-toolbar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3em 0.55em;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--ink-secondary);
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--transition);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.c-toolbar-btn:hover {
+    color: var(--ink);
+    background: var(--surface-warm);
+}
+
+/* Theme toggle icons */
+.c-theme-toggle svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Show sun in dark mode, moon in light mode */
+.c-icon-sun {
+    display: none;
+}
+
+.c-icon-moon {
+    display: block;
+}
+
+.theme-dark .c-icon-sun,
+.theme-manual-dark .c-icon-sun {
+    display: block;
+}
+
+.theme-dark .c-icon-moon,
+.theme-manual-dark .c-icon-moon {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .theme-auto .c-icon-sun {
+        display: block;
+    }
+
+    .theme-auto .c-icon-moon {
+        display: none;
+    }
+}
+
+/* Manual light override — always show moon */
+.theme-manual-light .c-icon-sun {
+    display: none;
+}
+
+.theme-manual-light .c-icon-moon {
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .c-toolbar {
+        display: none;
+    }
 }

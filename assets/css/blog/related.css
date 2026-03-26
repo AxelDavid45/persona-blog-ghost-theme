@@ -1,10 +1,12 @@
-.related-wrapper {
-    padding: 56px 0 32px;
-    margin-top: 80px;
-    background-color: var(--lighter-gray-color);
+/* ========================================
+   Cuaderno — Related Posts
+   ======================================== */
+
+.c-related {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border-light);
 }
 
-.related-title {
-    margin-bottom: 20px;
-    font-size: 2.1rem;
+.c-related .c-container {
+    max-width: var(--container-width);
 }

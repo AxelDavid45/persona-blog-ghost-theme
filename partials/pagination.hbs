@@ -1,3 +1,7 @@
-<nav class="load-more">
-    <button class="button button-secondary gh-loadmore">Load more</button>
+{{#if pagination.pages}}
+{{#if pagination.next}}
+<nav class="c-pagination" aria-label="Paginación">
+    <a class="c-btn c-btn-ghost" href="{{page_url next}}">Cargar más</a>
 </nav>
+{{/if}}
+{{/if}}

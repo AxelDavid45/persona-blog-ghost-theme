@@ -1,25 +1,13 @@
-<article class="feed {{visibility}} {{post_class}}">
-
-    <div class="feed-calendar">
-        <div class="feed-calendar-day">
-            {{date published_at format="DD"}}
-        </div>
-        <div class="feed-calendar-month">
-            {{date published_at format="MMM"}}
-        </div>
-    </div>
-
-    <h2 class="feed-title">{{title}}</h2>
-
-    <div class="feed-right">
-        {{> "icons/star"}}
-        <div class="feed-length">
-            {{reading_time}}
-        </div>
-    </div>
-
-    {{> "icons/chevron-right"}}
-
-    <a class="u-permalink" href="{{url}}" aria-label="{{title}}"></a>
-
-</article>
+<li class="c-post-item {{post_class}}">
+    <a class="c-post-link" href="{{url}}">
+        {{#if @custom.show_date}}
+        <time class="c-post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date published_at format="DD MMM."}}</time>
+        {{/if}}
+        <span class="c-post-title">{{title}}</span>
+        {{#if @custom.show_reading_time}}
+        {{#if reading_time}}
+            <span class="c-post-reading">{{reading_time minute="% min de lectura" minutes="% min de lectura"}}</span>
+        {{/if}}
+        {{/if}}
+    </a>
+</li>

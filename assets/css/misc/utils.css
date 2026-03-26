@@ -1,3 +1,7 @@
+/* ========================================
+   Cuaderno — Utilities
+   ======================================== */
+
 .u-permalink {
     position: absolute;
     top: 0;
@@ -8,29 +12,6 @@
     outline: none;
 }
 
-.u-placeholder {
-    position: relative;
-    z-index: 10;
-    background-color: var(--lighter-gray-color);
-}
-
-.u-placeholder::before {
-    display: block;
-    content: "";
-}
-
-.u-placeholder.horizontal::before {
-    padding-bottom: 50%;
-}
-
-.u-placeholder.rectangle::before {
-    padding-bottom: 62.5%;
-}
-
-.u-placeholder.square::before {
-    padding-bottom: 100%;
-}
-
 .u-object-fit {
     position: absolute;
     top: 0;
@@ -38,4 +19,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Reduced motion — respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

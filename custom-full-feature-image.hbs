@@ -1,19 +1,15 @@
 {{!< default}}
 
-<main class="site-main">
+{{#post}}
+    {{> "content" width="full"}}
+{{/post}}
 
-    {{#post}}
-        {{> "content" width="full"}}
-    {{/post}}
+{{#if @custom.show_related_posts}}
+    {{> "related-posts"}}
+{{/if}}
 
-    {{#is "post"}}
-        {{#if @custom.show_related_posts}}
-            {{> "related-posts"}}
-        {{/if}}
-
-        {{#post}}
-            {{> "comments"}}
-        {{/post}}
-    {{/is}}
-
-</main>
+{{#if @custom.show_comments}}
+{{#post}}
+    {{> "comments"}}
+{{/post}}
+{{/if}}

@@ -1,67 +1,88 @@
-.button {
+/* ========================================
+   Cuaderno — Buttons
+   ======================================== */
+
+.c-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 36px;
-    padding: 0 15px;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--brand-color);
+    padding: 0.6em 1.4em;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #fff;
+    background: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
     cursor: pointer;
-    background-color: var(--white-color);
-    border: 1px solid var(--light-gray-color);
-    border-radius: 3px;
-    outline: none;
+    transition: all var(--transition);
+    text-decoration: none;
+    line-height: 1.4;
 }
 
-.button:hover {
-    border-color: var(--mid-gray-color);
-    opacity: 1;
+.c-btn:hover {
+    background: var(--ink-secondary);
+    border-color: var(--ink-secondary);
+    color: #fff;
 }
 
-.button .icon-loading {
-    display: none;
+.c-btn-ghost {
+    background: transparent;
+    color: var(--ink);
 }
 
-.button.loading {
-    text-indent: -9999px;
+.c-btn-ghost:hover {
+    background: var(--ink);
+    color: #fff;
 }
 
-.button.loading .icon-loading {
-    display: block;
+.c-btn-accent {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.5em 1.3em;
 }
 
-.button-secondary {
-    color: var(--darker-gray-color);
+.c-btn-accent:hover {
+    background: var(--accent-red-hover);
+    border-color: var(--accent-red-hover);
+    color: #fff;
 }
 
-.button-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    color: var(--darker-gray-color);
+.c-btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--ink);
+}
+
+.c-btn-outline:hover {
+    border-color: var(--ink);
+    background: transparent;
+    color: var(--ink);
+}
+
+.c-btn-full {
+    width: 100%;
+    text-align: center;
+}
+
+.c-cta-link {
+    display: inline-block;
+    margin-top: 1em;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
     cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    outline: none;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--transition);
 }
 
-.button-icon:hover .icon {
-    opacity: 0.8;
-}
-
-.button-text {
-    padding: 0;
-    margin: 0;
-    line-height: inherit;
-    color: var(--darker-gray-color);
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    outline: none;
+.c-cta-link:hover {
+    color: var(--ink);
 }
