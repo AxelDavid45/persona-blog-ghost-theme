@@ -1,38 +1,62 @@
-# Dawn
+# Cuaderno
 
-A highly functional [Ghost](https://github.com/TryGhost/Ghost) theme that adapts to the reader's preferences. Let them read, search, subscribe, navigate, and more with ease.
+A warm, editorial Ghost theme — cinematic single-column layout, Spanish-first UI. Built for [Ghost](https://ghost.org) >= 5.0.0.
 
-**Demo: https://dawn.ghost.io**
+## Features
 
-# Instructions
+- Warm editorial palette with CSS custom properties (`--cream`, `--ink`, `--terracotta`, `--gold`)
+- Light, dark, and auto color schemes
+- Selectable post templates (full / narrow / no feature image)
+- Reading time, related posts, and comments toggles
+- Self-hosted iA Writer Mono for code blocks and meta
+- Fully localized in Spanish
 
-1. [Download this theme](https://github.com/TryGhost/Dawn/archive/main.zip)
-2. Log into Ghost, and go to the `Design` settings area to upload the zip file
+## Development
 
-# Development
-
-Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
-
-```bash
-# Install
-yarn
-
-# Run build & watch for changes
-yarn dev
-```
-
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
-
-The `zip` Gulp task packages the theme files into `dist/dawn.zip`, which you can then upload to your site.
+Requires [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/).
 
 ```bash
-yarn zip
+pnpm install              # Install dependencies
+pnpm dev                  # Build + watch + livereload
+pnpm test                 # Theme validation (gscan)
+pnpm zip                  # Package into dist/cuaderno.zip
 ```
 
-# Contribution
+### Versioning
 
-This repo is synced automatically with [TryGhost/Themes](https://github.com/TryGhost/Themes) monorepo. If you're looking to contribute or raise an issue, head over to the main repository [TryGhost/Themes](https://github.com/TryGhost/Themes) where our official themes are developed.
+The theme follows [semver](https://semver.org/). A pre-commit hook bumps the patch version automatically on every commit. For manual bumps:
 
-# Copyright & License
+```bash
+pnpm version:patch        # 0.0.x
+pnpm version:minor        # 0.x.0
+pnpm version:major        # x.0.0
+```
 
-Copyright (c) 2013-2025 Ghost Foundation - Released under the [MIT license](LICENSE).
+### Supply chain security
+
+Managed with pnpm v10+ and configured in `pnpm-workspace.yaml`:
+
+- No packages are allowed to run install scripts
+- Transitive dependencies cannot use git repos or tarball URLs
+- New packages must be published for at least 3 days before installation
+
+## Project structure
+
+```text
+*.hbs                     # Ghost route templates
+partials/                 # Reusable Handlebars components
+assets/
+  css/
+    screen.css            # PostCSS entry point
+    general/              # Fonts, basics, buttons, forms, icons
+    site/                 # Layout, header, cover/hero
+    blog/                 # Feed, post, author, tags, comments
+    misc/                 # Utilities, animations, dark mode
+  js/
+    main.js               # Vanilla JS (no jQuery)
+  fonts/                  # Self-hosted iA Writer Mono
+```
+
+## License
+
+[MIT](LICENSE) — based on [Dawn](https://github.com/TryGhost/Dawn) by Ghost Foundation.
