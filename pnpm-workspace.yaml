@@ -1,0 +1,4 @@
+# Supply chain security
+onlyBuiltDependencies: []
+blockExoticSubdeps: true
+minimumReleaseAge: 4320

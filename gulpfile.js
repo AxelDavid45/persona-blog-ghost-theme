@@ -82,8 +82,7 @@ function zipper(done) {
         src([
             '**',
             '!node_modules', '!node_modules/**',
-            '!dist', '!dist/**',
-            '!yarn-error.log'
+            '!dist', '!dist/**'
         ]),
         zip(filename),
         dest('dist/')

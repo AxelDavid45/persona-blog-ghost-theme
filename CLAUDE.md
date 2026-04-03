@@ -9,10 +9,13 @@ This is **Cuaderno**, a custom Ghost theme for Axel Espinosa's personal blog. It
 ## Commands
 
 ```bash
-yarn              # Install dependencies
-yarn dev          # Build assets + watch for changes + livereload
-yarn test         # Run gscan theme validation
-yarn zip          # Build and package theme into dist/cuaderno.zip for upload
+pnpm install              # Install dependencies
+pnpm dev                  # Build assets + watch for changes + livereload
+pnpm test                 # Run gscan theme validation
+pnpm zip                  # Build and package theme into dist/cuaderno.zip for upload
+pnpm version:patch        # Bump patch version (0.0.x)
+pnpm version:minor        # Bump minor version (0.x.0)
+pnpm version:major        # Bump major version (x.0.0)
 ```
 
 ## Build Pipeline

@@ -175,4 +175,125 @@
                 });
         });
     }
+
+    // =============================================
+    // Reading analytics (Plausible)
+    // Tracks scroll depth and reading time on posts
+    // =============================================
+    (function initReadingAnalytics() {
+        // Only run on post pages
+        if (!document.body.classList.contains('post-template')) return;
+
+        // Check if Plausible is available
+        var hasPlausible = typeof window.plausible === 'function';
+        
+        function trackEvent(name, props) {
+            if (hasPlausible) {
+                window.plausible(name, { props: props });
+            }
+        }
+
+        var article = document.querySelector('.c-article');
+        var articleContent = document.querySelector('.gh-content');
+        if (!article || !articleContent) return;
+
+        // Get article title for props
+        var titleEl = document.querySelector('.c-article-title');
+        var articleTitle = titleEl ? titleEl.textContent.trim().substring(0, 50) : 'Unknown';
+
+        // Scroll depth tracking
+        var milestones = [25, 50, 75, 100];
+        var milestonesReached = {};
+        
+        function getScrollPercentage() {
+            var articleRect = articleContent.getBoundingClientRect();
+            var articleTop = articleRect.top + window.scrollY;
+            var articleHeight = articleContent.offsetHeight;
+            var viewportHeight = window.innerHeight;
+            var scrollY = window.scrollY;
+            
+            // How much of the article has been scrolled past
+            var scrolledPast = scrollY + viewportHeight - articleTop;
+            var percentage = Math.min(100, Math.max(0, (scrolledPast / articleHeight) * 100));
+            
+            return Math.round(percentage);
+        }
+
+        function checkMilestones() {
+            var percentage = getScrollPercentage();
+            
+            milestones.forEach(function (milestone) {
+                if (percentage >= milestone && !milestonesReached[milestone]) {
+                    milestonesReached[milestone] = true;
+                    trackEvent('Scroll Depth', {
+                        depth: milestone + '%',
+                        title: articleTitle
+                    });
+                }
+            });
+        }
+
+        // Debounced scroll handler
+        var scrollTimeout;
+        window.addEventListener('scroll', function () {
+            if (scrollTimeout) return;
+            scrollTimeout = setTimeout(function () {
+                scrollTimeout = null;
+                checkMilestones();
+            }, 100);
+        }, { passive: true });
+
+        // Initial check (in case page loads scrolled)
+        checkMilestones();
+
+        // Time on page tracking
+        var startTime = Date.now();
+        var maxScrollDepth = 0;
+
+        function updateMaxDepth() {
+            var current = getScrollPercentage();
+            if (current > maxScrollDepth) {
+                maxScrollDepth = current;
+            }
+        }
+
+        window.addEventListener('scroll', updateMaxDepth, { passive: true });
+
+        // Track reading session on page unload
+        function trackReadingSession() {
+            var timeSpent = Math.round((Date.now() - startTime) / 1000); // seconds
+            var timeCategory;
+            
+            if (timeSpent < 30) timeCategory = '< 30s';
+            else if (timeSpent < 60) timeCategory = '30s - 1min';
+            else if (timeSpent < 180) timeCategory = '1 - 3min';
+            else if (timeSpent < 300) timeCategory = '3 - 5min';
+            else if (timeSpent < 600) timeCategory = '5 - 10min';
+            else timeCategory = '> 10min';
+
+            // Determine engagement level
+            var engagement;
+            if (maxScrollDepth >= 75 && timeSpent >= 60) engagement = 'Engaged';
+            else if (maxScrollDepth >= 50) engagement = 'Partial';
+            else if (maxScrollDepth >= 25) engagement = 'Bounce risk';
+            else engagement = 'Bounced';
+
+            trackEvent('Reading Session', {
+                time: timeCategory,
+                maxDepth: Math.round(maxScrollDepth) + '%',
+                engagement: engagement,
+                title: articleTitle
+            });
+        }
+
+        // Use visibilitychange for more reliable tracking
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'hidden') {
+                trackReadingSession();
+            }
+        });
+
+        // Fallback for older browsers
+        window.addEventListener('beforeunload', trackReadingSession);
+    })();
 })();
