@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{statusCode}} — {{message}}</title>
+    <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    <style>
+        .c-error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Source Sans 3', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: #F5F0EB;
+            color: #2D2926;
+        }
+        .c-error-code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: 0 0 0.5rem;
+            color: #B33A2A;
+        }
+        .c-error-message {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 1.5rem;
+            color: #2D2926;
+        }
+        .c-error-link {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #2D2926;
+            text-decoration: none;
+            border: 1px solid #D5CFC8;
+            padding: 0.6em 1.4em;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+        }
+        .c-error-link:hover {
+            background: #2D2926;
+            color: #fff;
+            border-color: #2D2926;
+        }
+        .c-error-details {
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 600px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            color: #8C8580;
+        }
+        .c-error-details h3 {
+            font-size: 0.85rem;
+            color: #5C5652;
+            margin-bottom: 0.5rem;
+        }
+        .c-error-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        .c-error-details li {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #EDE8E3;
+            border-radius: 3px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .c-error { background: #1C1916; color: #E8E2D8; }
+            .c-error-message { color: #E8E2D8; }
+            .c-error-link { color: #E8E2D8; border-color: #3E3832; }
+            .c-error-link:hover { background: #E8E2D8; color: #1C1916; border-color: #E8E2D8; }
+            .c-error-details { color: #9A928A; }
+            .c-error-details h3 { color: #C0B8AC; }
+            .c-error-details li { background: #252220; }
+        }
+    </style>
+</head>
+<body>
+    <main class="c-error" role="main">
+        <h1 class="c-error-code">{{statusCode}}</h1>
+        <p class="c-error-message">{{message}}</p>
+        <a class="c-error-link" href="{{@site.url}}">Volver al inicio &rarr;</a>
+
+        {{#if errorDetails}}
+        <section class="c-error-details">
+            <h3>Detalles del error</h3>
+            <ul>
+                {{#foreach errorDetails}}
+                <li>
+                    <strong>{{{rule}}}</strong>
+                    {{#foreach failures}}
+                    <p>Ref: {{ref}}</p>
+                    <p>{{message}}</p>
+                    {{/foreach}}
+                </li>
+                {{/foreach}}
+            </ul>
+        </section>
+        {{/if}}
+    </main>
+</body>
+</html>

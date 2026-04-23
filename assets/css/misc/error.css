@@ -1,0 +1,29 @@
+/* ========================================
+   Cuaderno — Error Pages (404 with layout)
+   ======================================== */
+
+.c-error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 50vh;
+    padding: 4rem 0;
+}
+
+.c-error-page-code {
+    font-family: var(--font-mono);
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 0.5rem;
+    color: var(--accent-red);
+}
+
+.c-error-page-message {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--ink-secondary);
+    margin: 0 0 2rem;
+    max-width: 400px;
+}

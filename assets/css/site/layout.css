@@ -21,8 +21,8 @@
 }
 
 .gh-canvas {
-    max-width: var(--container-width);
-    margin: 0 auto;
+    --content-width: var(--container-width);
+    --container-width: 1200px;
     padding: 0 var(--gutter);
 }
 

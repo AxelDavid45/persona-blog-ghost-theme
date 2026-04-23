@@ -3,7 +3,11 @@
 <section class="c-hero" aria-label="Presentación">
     <div class="c-container c-hero-inner">
         {{#if @site.logo}}
-            <img class="c-hero-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+            <picture>
+                <source srcset="{{img_url @site.logo size="s" format="avif"}}" type="image/avif">
+                <source srcset="{{img_url @site.logo size="s" format="webp"}}" type="image/webp">
+                <img class="c-hero-logo" src="{{img_url @site.logo size="s"}}" alt="{{@site.title}}" width="120" height="120" loading="eager" fetchpriority="high">
+            </picture>
         {{/if}}
 
         {{#if @site.description}}
